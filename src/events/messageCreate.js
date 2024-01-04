@@ -1,7 +1,6 @@
 const { EmbedBuilder, Collection, PermissionsBitField } = require('discord.js')
 const ms = require('ms');
 const client = require('..');
-const config = require('../config.json');
 const prefix = client.prefix;
 const cooldown = new Collection();
 

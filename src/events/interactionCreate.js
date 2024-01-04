@@ -1,7 +1,6 @@
 const { EmbedBuilder, Collection, PermissionsBitField } = require('discord.js');
 const ms = require('ms');
 const client = require('..');
-const config = require('../config.json');
 const Economy = require('discord-economy-super/mongodb');
 
 const cooldown = new Collection();

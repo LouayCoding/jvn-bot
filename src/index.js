@@ -1,9 +1,9 @@
 const { Client, GatewayIntentBits, Partials, Collection } = require('discord.js');
-
+const { mongoConnectionUrl, prefix, token } = require('./config');
 const path = require('path');
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://attahirilouay:attahirilouay@cluster0.3hipxxt.mongodb.net/', {
+mongoose.connect(mongoConnectionUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -25,21 +25,10 @@ const client = new Client({
 });
 
 const fs = require('fs');
-const config = require('./config.json');
-
-require('dotenv').config();
-
-
-
-
 const collections = ['commands', 'aliases', 'slashCommands', 'buttons', 'modals', 'menus'];
 collections.forEach(name => client[name] = new Collection());
 
-
-client.prefix = config.prefix;
-client.config = config;
-
-
+client.prefix = prefix;
 module.exports = client;
 
 fs.readdirSync(path.join(__dirname, 'handlers')).forEach((handler) => {
@@ -47,7 +36,4 @@ fs.readdirSync(path.join(__dirname, 'handlers')).forEach((handler) => {
 	require(handlerPath)(client);
   });
 
-
-
-
-client.login(process.env.TOKEN)
+client.login(token)
