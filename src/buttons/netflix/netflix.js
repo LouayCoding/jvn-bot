@@ -1,4 +1,5 @@
 const { StringSelectMenuBuilder, StringSelectMenuOptionBuilder, ButtonStyle, ActionRowBuilder, ButtonBuilder, EmbedBuilder, PermissionFlagsBits } = require('discord.js');
+const { paymentSelect } = require('../../utils/paymentMethods');
 
 module.exports = {
     id: 'netflix',
@@ -19,26 +20,8 @@ module.exports = {
                 new StringSelectMenuOptionBuilder()
                     .setLabel('Netflix premium 4k 6 months')
                     .setValue('Netflix 6 months')
-                    .setEmoji('<:Netflix:1192313051412697149>'), 
+                    .setEmoji('<:Netflix:1192313051412697149>'),
 
-            );
-
-        const paymentSelect = new StringSelectMenuBuilder()
-            .setCustomId('payment')
-            .setPlaceholder('Select payment method')
-            .addOptions(
-                new StringSelectMenuOptionBuilder()
-                    .setLabel('Paypal')
-                    .setValue('paypal')
-                    .setEmoji('<:Paypal:1189641822096605184>'),
-                new StringSelectMenuOptionBuilder()
-                    .setLabel('Crypto')
-                    .setValue('crypto')
-                    .setEmoji('<:Crypto:1189641698125553714>'),
-                new StringSelectMenuOptionBuilder()
-                    .setLabel('iDeal')
-                    .setValue('ideal')
-                    .setEmoji('<:Ideal:1189641810260271244>'),
             );
 
 

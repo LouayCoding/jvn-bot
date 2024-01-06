@@ -1,4 +1,5 @@
 const { StringSelectMenuBuilder, StringSelectMenuOptionBuilder, ButtonStyle, ActionRowBuilder, ButtonBuilder, EmbedBuilder, PermissionFlagsBits } = require('discord.js');
+const { paymentSelect } = require('../../utils/paymentMethods');
 
 module.exports = {
     id: 'vbucks',
@@ -31,23 +32,7 @@ module.exports = {
 
             );
 
-        const paymentSelect = new StringSelectMenuBuilder()
-            .setCustomId('payment')
-            .setPlaceholder('Select payment method')
-            .addOptions(
-                new StringSelectMenuOptionBuilder()
-                    .setLabel('Paypal')
-                    .setValue('paypal')
-                    .setEmoji('<:Paypal:1189641822096605184>'),
-                new StringSelectMenuOptionBuilder()
-                    .setLabel('Crypto')
-                    .setValue('crypto')
-                    .setEmoji('<:Crypto:1189641698125553714>'),
-                new StringSelectMenuOptionBuilder()
-                    .setLabel('iDeal')
-                    .setValue('ideal')
-                    .setEmoji('<:Ideal:1189641810260271244>'),
-            );
+
 
 
         const row1 = new ActionRowBuilder().addComponents(vbucksSelect);
@@ -126,11 +111,11 @@ module.exports = {
                             { name: 'V-Bucks Amount', value: vbucksValue },
                             { name: 'Payment Method', value: paymentMethod }
                         )
-                    
+
                     const closeButton = new ButtonBuilder()
-                    .setCustomId('close')
-                    .setLabel('Close')
-                    .setStyle(ButtonStyle.Danger)
+                        .setCustomId('close')
+                        .setLabel('Close')
+                        .setStyle(ButtonStyle.Danger)
 
                     const buttons = new ActionRowBuilder().addComponents(closeButton);
                     channel.send({ embeds: [embed], components: [buttons] });
